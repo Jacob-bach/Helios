@@ -1,83 +1,55 @@
-# Helios: Project Progress Report
+# Helios Project
 
 ## Overview
+The Helios Project is focused on analyzing solar flare data from the Reuven Ramaty High-Energy Solar Spectroscopic Imager (RHESSI) satellite, specifically covering datasets from 2004-2005 and 2015-2016. The aim of this project is to estimate solar flare intensity, discover solar hotspots, and understand solar activity cycles. By leveraging various machine learning techniques, the Helios Project contributes to a better understanding of solar phenomena and their potential impacts on Earth's communication systems, satellites, and power grids.
 
-This README provides an overview of our current progress on the Helios project, focusing on the team's work, challenges, and next steps.
+## Objectives
+- Analyze RHESSI solar flare data to estimate flare intensity and track hotspots.
+- Develop regression models to predict solar flare intensities based on different predictor values.
+- Identify and track patterns in solar activity over time, particularly focusing on the 11-year solar cycle.
+- Create visualizations for solar flare intensity and hotspots, helping in understanding the behavior and distribution of solar activity.
 
-## Team Members
+## Data
+The dataset used in the Helios Project includes solar flare data obtained by the RHESSI satellite, containing attributes such as:
+- **Date**: Timestamp of when the flare occurred.
+- **Position (x.pos.asec, y.pos.asec)**: Coordinates of the flare on the Sun.
+- **Energy (energy.kev.i, energy.kev.f)**: Energy range of the flare, measured in kilo-electron volts (keV).
+- **Duration (duration.s)**: Duration of the flare in seconds.
+- **Total Count (total.counts)**: Total number of corrected counts for a specific energy range.
 
-Jacob Bachtarie
+## Methodologies
+- **Machine Learning Models**: Linear Regression, Support Vector Machines, Decision Trees, Gradient Boosting (XGBoost), and Random Forest were used to estimate solar flare intensity.
+- **Hyperparameter Tuning**: RandomizedSearchCV was used to optimize the model's performance by finding the best hyperparameter values.
+- **Scaling and Cross-Validation**: Preprocessing methods such as RobustScaler and StandardScaler were tested. Cross-validation was done using RepeatedKFold to ensure robust evaluation.
+- **Hotspot Discovery**: Kernel Density Estimation (KDE) was used to identify solar hotspots based on the estimated flare intensities.
 
-Nikolas Velazquez 
+## Key Findings
+- **Hotspot Patterns**: Hotspots were mostly concentrated along the center of the solar axis. Two types of hotspots were identified—small, highly intense spots (D1) and larger regional hotspots (D2).
+- **Solar Cycle Insights**: Analysis of solar flare data indicated a repeating solar cycle, approximately every 11 years, with similar sunspot activity in 2004-2005 and 2015-2016.
+- **Intensity Maps**: Visualizations were generated to show the spatial distribution of solar flare intensity. Comparisons showed that solar activity varied significantly across the different time periods analyzed.
 
-Tam Nguyen 
+## File Structure
+- **notebooks/**: Contains Jupyter notebooks used for data exploration, modeling, and visualizations.
+- **data/**: Includes the datasets used for training and analysis.
+- **models/**: Saved machine learning models.
+- **visualizations/**: Images and videos of solar flare intensity maps and hotspot distributions.
 
-Braddock Mitchell Parks 
+## Usage
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/helios-project.git
+   ```
+2. Install the required dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. Run the Jupyter notebooks in the `notebooks/` directory to explore the data and build models.
 
-## Project Goals
-
-The goal of the Helios project is to develop and implement methods to analyze spatial data and identify potential hotspots. We are utilizing Python to develop kernel density function methods and applying K-Nearest-Neighbor (KNN) as one of our primary analysis techniques.
-
-## Current Progress
-
-The team has divided the tasks among all members, focusing on understanding the dataset and developing kernel density functions.
-
-For those new to Python, time has been allocated for learning and familiarizing with libraries like NumPy, Seaborn, and Matplotlib to perform data analysis and visualization.
-
-We have made significant progress on developing initial models and are in the process of creating visual representations to accompany our findings using Seaborn and Matplotlib.
-
-## Hotspot Discovery Algorithm
-
-We are actively discussing approaches for implementing a hotspot discovery algorithm.
-
-Our current plan involves examining intensity percentiles to determine areas that could be classified as significant hotspots.
-
-We are evaluating several methods, including Kernel Density Estimation, to determine which approach will provide the best results for our specific dataset.
-
-# Implementation Details
-
-## Data Analysis and Preprocessing
-
-We used Python libraries such as Pandas and NumPy for data analysis and preprocessing.
-
-Data visualization was performed using Matplotlib and Seaborn, which helped in understanding trends and distributions within the dataset.
-
-## Models Implemented
-
-Model 1: XGBoost Regressor (XGBRegressor) was used with parameters such as learning rate = 0.248, max depth = 10, and n_estimators = 546. The target variable was total.counts, and the input features included attributes like duration.s, peak.c/s, and energy.kev.i.
-
-Model 2: RandomForest Regressor was applied after adding an intensity attribute to the dataset. The intensity was calculated as the average energy multiplied by the duration. The target variable for Model 2 was intensity, and input features included temporal and spatial attributes.
-
-## Model Performance
-
-XGBoost Regressor (Model 1): Mean MAE was 138029.805 (17625.737).
-
-RandomForest Regressor (Model 2): Mean MAE was 4162.393 (193.812).
-
-Several other regression models were implemented for comparison, including Support Vector Regressor (SVR), Ridge Regression, and Linear Regression. The performance of these models was evaluated using Mean Absolute Error (MAE), and the results were documented for each approach.
-
-## Visual Representations
-
-Visualizations were created using Seaborn and Matplotlib to better understand the relationships between features and target variables. These visualizations are integral to interpreting model performance and making decisions about feature engineering.
-
-## Challenges
-Re-evaluating Assumptions: There is a need to re-evaluate assumptions made about the dataset to ensure that the models and methods used are appropriate for the data characteristics and distributions.
-Time Management: Limited time availability is proving to be a constraint for effective collaboration and task completion.
-
-## Next Steps
-
-Complete the implementation of the K-Nearest-Neighbor method and begin evaluation of its effectiveness.
-
-Finalize the hotspot discovery algorithm and determine the thresholds for classifying high-intensity regions.
-
-Continue developing visual representation tools to aid in communicating our findings.
-
-## Technologies Used
-
-Python: For data analysis and model development.
-
-Jupyter Notebooks: For interactive coding and sharing insights.
-
-Seaborn and Matplotlib: For visualization of data and model results.
-
-XGBoost, RandomForest, SVR, Ridge Regression: For building and evaluating predictive models.
+## Dependencies
+- Python 3.8+
+- NumPy
+- Pandas
+- Scikit-learn
+- XGBoost
+- Matplotlib
+- SciPy
