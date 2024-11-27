@@ -34,9 +34,9 @@ Our current plan involves examining intensity percentiles to determine areas tha
 
 We are evaluating several methods, including Kernel Density Estimation, to determine which approach will provide the best results for our specific dataset.
 
-## Implementation Details
+# Implementation Details
 
-Data Analysis and Preprocessing
+## Data Analysis and Preprocessing
 
 We used Python libraries such as Pandas and NumPy for data analysis and preprocessing.
 
@@ -48,7 +48,7 @@ Model 1: XGBoost Regressor (XGBRegressor) was used with parameters such as learn
 
 Model 2: RandomForest Regressor was applied after adding an intensity attribute to the dataset. The intensity was calculated as the average energy multiplied by the duration. The target variable for Model 2 was intensity, and input features included temporal and spatial attributes.
 
-Model Performance
+## Model Performance
 
 XGBoost Regressor (Model 1): Mean MAE was 138029.805 (17625.737).
 
@@ -72,7 +72,7 @@ Finalize the hotspot discovery algorithm and determine the thresholds for classi
 
 Continue developing visual representation tools to aid in communicating our findings.
 
-Technologies Used
+## Technologies Used
 
 Python: For data analysis and model development.
 
